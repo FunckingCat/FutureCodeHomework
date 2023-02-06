@@ -52,8 +52,7 @@ public class HomeWork4 {
     public static final List<String> STRING_LIST_CORRECT = Arrays.asList(
             "list",
             "user authorization was successful",
-            "and who are the judges",
-            "the arraylist class inherits from the abstractList class"
+            "and who are the judges"
     );
 
     public static final HashMap<String,Integer> HASH_MAP = new HashMap<>();
