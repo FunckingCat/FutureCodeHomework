@@ -9,7 +9,7 @@ public class HomeWork6 {
     В цикле вызвать метод play() для каждого инструмента,
     который должен выводить строку "Играет такой-то инструмент, с такими-то характеристиками".
 
-    Создайте 3 интерфейса, Game, TableGame implements Game, ComputerGame implements Game.
+    Создайте 3 интерфейса, Game, TableGame extends Game, ComputerGame extends Game.
     Интерфейс Game должен содержать метод void start() и метод Boolean end().
     Интерфейс TableGame должен содержать метод void rollDice().
     Интерфейс ComputerGame должен содержать метод void shoot() и метод void move().
