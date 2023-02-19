@@ -12,6 +12,18 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
+/**
+ * Правила выполнения домашнего задания:
+ *
+ * 1. Вся работа выполняется в файле доамашнего задания
+ *      Если вас просят создать класс - его надо создать вложенным, т.е. внутри класса HomeWorkN
+ *      вы создаете класс MyClass {} (все в одном файле)
+ * 2. Задание считается выполненным если все тесты пройдены.
+ *      Тест выполнен если напротив него находится знак ✅
+ * 3. Что бы запустить тесты нажмите значек запуска кода напротив мтода main.
+ *      ‼️ВАЖНО‼️ Вся работа в модкле ведется на JDK-17, перед запуском скачайте его и установите
+ *      правильный JDK и уровень языка в Settings -> Project Structure
+ */
 public class  HomeWork3 {
 
     /**
@@ -31,18 +43,22 @@ public class  HomeWork3 {
      *          для ExportException вернуть строку "ExportException"
      */
 
-    public static void main(String[] args) {
-        testFirstTask();
-        testSecondTask();
-    }
     public static void raiseException(Integer exceptionId) throws Exception { // Подсказка: throws Exception в итоге надо поменять на перечисление имен исключений
         // Напиши свой код тут для задания 1
         throw new Exception();
     }
+
     public static String catchException(Integer integer) {
         // Напиши свой код тут для задания 2
         return "Exception";
     }
+
+    public static void main(String[] args) {
+        testFirstTask();
+        testSecondTask();
+    }
+
+    /* Техническая секция - сюда писать ничего не надо */
 
     private static final Map<Integer, Class<? extends Exception>> classesCorrelation = Map.of(
             1, SocketException.class,
