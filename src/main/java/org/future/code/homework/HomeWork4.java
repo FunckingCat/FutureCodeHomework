@@ -4,15 +4,29 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 
+/**
+ * Правила выполнения домашнего задания:
+ *
+ * 1. Вся работа выполняется в файле доамашнего задания
+ *      Если вас просят создать класс - его надо создать вложенным, т.е. внутри класса HomeWorkN
+ *      вы создаете класс MyClass {} (все в одном файле)
+ * 2. Задание считается выполненным если все тесты пройдены.
+ *      Тест выполнен если напротив него находится знак ✅
+ * 3. Что бы запустить тесты нажмите значек запуска кода напротив мтода main.
+ *      ‼️ВАЖНО‼️ Вся работа в модкле ведется на JDK-17, перед запуском скачайте его и установите
+ *      правильный JDK и уровень языка в Settings -> Project Structure
+ */
 public class HomeWork4 {
 
     /**
      * Задание №1
+     * ‼️ Нужно создать новый список а не модифировать старый ️‼️
      * У Вас есть список stringList, элементами которого являются строки.
      * Необходимо написать метод correctedList(), который создаст и вернет новый список,
      *      содержащий все строки, не содержащие буквы в верхнем регистре(Заглавные).
@@ -24,19 +38,21 @@ public class HomeWork4 {
      * Необходимо написать метод magSort(), который удалит из корзины все продукты, вес которых больше 300.
      */
 
-    public static void main(String[] args) {
-        testFirstTask();
-        testSecondTask();
-    }
-
     public static List<String> correctedList(List<String> stringList) {
         // Место для Вашего кода задания №1
-        return stringList;
+        return Collections.emptyList();
     }
     public static HashMap<String, Integer> magSort(HashMap<String, Integer> shopCart) {
         // Место для Вашего кода задания №2
         return shopCart;
     }
+
+    public static void main(String[] args) {
+        testFirstTask();
+        testSecondTask();
+    }
+
+    /* Техническая секция - сюда писать ничего не надо */
 
     public static final List<String> STRING_LIST = Arrays.asList(
             "Onee",
