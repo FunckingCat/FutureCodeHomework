@@ -8,6 +8,19 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 
+/**
+ * Правила выполнения домашнего задания:
+ *
+ * 1. Вся работа выполняется в файле доамашнего задания
+ *      Если вас просят создать класс - его надо создать вложенным, т.е. внутри класса HomeWorkN
+ *      вы создаете класс MyClass {} (все в одном файле)
+ * 2. Задание считается выполненным если все тесты пройдены.
+ *      Тест выполнен если напротив него находится знак ✅
+ * 3. Что бы запустить тесты нажмите значек запуска кода напротив мтода main.
+ *      ‼️ВАЖНО‼️ Вся работа в модкле ведется на JDK-17, перед запуском скачайте его и установите
+ *      правильный JDK и уровень языка в Settings -> Project Structure
+ *      Если у тебя не выбран JDK17 toList() бдует выдавать ошибку
+ */
 public class HomeWork2 {
 
     /**
@@ -25,24 +38,19 @@ public class HomeWork2 {
      *     - если метод validateLogin выбросил ошибку - вернуть false
      */
 
-    public static List<String> loginList = Arrays.asList(
-            "Minecraft_12",                                     // true
-            "Player_3433",                                      // true
-            "Dok_a111",                                         // true
-            "Java",                                             // false
-            "1122233",                                          // false
-            "Play__",                                           // false
-            "_Sun2_",                                           // true
-            "____",                                             // false
-            "Winx!",                                            // false
-            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12_",            // false
-            "WOWOWOOWOWOWOOWOWOWOWOWOW",                        // false
-            "Correct_22"                                        // true
-    );
+    public static void validateLogin(String login) {
+        //Место для Вашего кода из пункта 2
+    }
 
-    public static List<Boolean> checkLoginResults = Arrays.asList(
-            true, true, true, false, false, false, true, false, false, false, false, true
-    );
+    public static Boolean isLoginValid(String login) {
+        //Место для Вашего кода из пункта 3
+        return false;
+    }
+
+    /*
+    Это метод main - нажми play что бы запустить тесты
+    Ничего не меняй в тестах, они уже написаны так что бы проверить твое решение
+    */
 
     public static void main(String[] args) {
         System.out.println("\nTests for validateLogin");
@@ -65,14 +73,26 @@ public class HomeWork2 {
                     20);
     }
 
-    public static void validateLogin(String login) {
-        //Место для Вашего кода из пункта 2
-    }
+    /* Техническая секция - сюда писать ничего не надо */
 
-    public static Boolean isLoginValid(String login) {
-        //Место для Вашего кода из пункта 3
-        return false;
-    }
+    public static List<Boolean> checkLoginResults = Arrays.asList(
+            true, true, true, false, false, false, true, false, false, false, false, true
+    );
+
+    public static List<String> loginList = Arrays.asList(
+            "Minecraft_12",                                     // true
+            "Player_3433",                                      // true
+            "Dok_a111",                                         // true
+            "Java",                                             // false
+            "1122233",                                          // false
+            "Play__",                                           // false
+            "_Sun2_",                                           // true
+            "____",                                             // false
+            "Winx!",                                            // false
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12_",            // false
+            "WOWOWOOWOWOWOOWOWOWOWOWOW",                        // false
+            "Correct_22"                                        // true
+    );
 
     public static class AntiCheat {
         public static void run() {
