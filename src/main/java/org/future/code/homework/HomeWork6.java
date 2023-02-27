@@ -7,8 +7,8 @@ public class HomeWork6 {
     /*
 
     Напиши реализацию интерфейса Playable:
-        - Метод String play()
-        - Метод String[] playWith(Playable playable)
+        - Метод List<String> play()
+        - Метод List<String> playWith(Playable playable)
 
     Напиши реализацию абстрактного класса Instrument:
         - Класс должен релизовать интерфейс Playable
