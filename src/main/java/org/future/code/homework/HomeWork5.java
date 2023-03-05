@@ -8,10 +8,8 @@ public class HomeWork5 {
     /*
    Домашнее задание #5:
    !!! У всех полей классов выставить модификатор доступа private
-
    Реализовать исключение «PersonDead»
        Наследовать класс от «Exception»
-
    Реализовать класс «Person»
        Поля класса - name:String, protection:Integer, health:Integer (+конструктор, +геттеры)
        Все Люди имеют 50 здоровья и защиту 0
@@ -24,7 +22,6 @@ public class HomeWork5 {
             Здоровье не может стать отрицательным
             Когда здоровье персонажа опускается до 0, выкидывается исключение PersonDead
        Метод - Integer facePunch() - удар в лицо наносит один урон
-
    Реализовать класс «Mage»
        Наследовать класс от «Person»
        Конструктор класса принимает только имя
@@ -34,7 +31,6 @@ public class HomeWork5 {
             по формуле health - (damage - protection - health % 10) (Случайный баф)
             !!! Метод должен вызывать метод takeDamage super-класса
        Метод - Integer fireBall() - фаербол наносит 45 урона
-
    Реализовать класс «Archer»
        Наследовать класс от «Person»
        Конструктор класса принимает только имя
@@ -45,7 +41,6 @@ public class HomeWork5 {
             !!! Метод должен вызывать метод takeDamage super-класса
        Метод - Integer shootBow() - стрельба из лука наносит 40 + health % 10 урона
     */
-
     public static class PersonDead extends Exception {
         public PersonDead(String message) {
             super(message);
@@ -99,7 +94,8 @@ public class HomeWork5 {
         test("Mage: announce() содержит имя", mage.announce().contains(MAGE_NAME));
         test("Mage: announce() содержит здоровье", mage.announce().contains(MAGE_HEALTH.toString()));
         test("Mage: announce() содержит защиту", mage.announce().contains(MAGE_HEALTH.toString()));
-        test("Mage: fireBall() наносит 45 урона", mage.fireBall() == 45);
+        Mage mage1 = new Mage(MAGE_NAME);
+        test("Mage: fireBall() наносит 45 урона", mage1.fireBall() == 45);
         mage.takeDamage(DAMAGE1);
         firstCheck = mage.getHealth() == 85;
         mage.takeDamage(DAMAGE1);
@@ -120,12 +116,13 @@ public class HomeWork5 {
         test("Archer: announce() содержит имя", archer.announce().contains(ARCHER_NAME));
         test("Archer: announce() содержит здоровье", archer.announce().contains(ARCHER_HEALTH.toString()));
         test("Archer: announce() содержит защиту", archer.announce().contains(ARCHER_PROTECTION.toString()));
-        test("Archer: shootBow() считается по формуле", archer.shootBow() == 40 + archer.getHealth() % 10);
-        archer.takeDamage(DAMAGE1);
-        firstCheck = archer.getHealth() == 102;
-        archer.takeDamage(DAMAGE1);
-        test("Archer: shootBow() считается по формуле", archer.shootBow() == 40 + archer.getHealth() % 10);
-        secondCheck = archer.getHealth() == 82;
+        test("Archer: shootBow() считается по формуле", 40 + archer.getHealth() % 10 == archer.shootBow());
+        Archer archer1 = new Archer(ARCHER_NAME);
+        archer1.takeDamage(DAMAGE1);
+        firstCheck = archer1.getHealth() == 102;
+        archer1.takeDamage(DAMAGE1);
+        test("Archer: shootBow() считается по формуле", 40 + archer.getHealth() % 10 == archer.shootBow());
+        secondCheck = archer1.getHealth() == 82;
         try {
             archer.takeDamage(DAMAGE2);
         } catch (PersonDead e) {
@@ -167,6 +164,7 @@ public class HomeWork5 {
 
     private static class ANSIColor {
         public Map<String, String> ansiColors = new HashMap<>();
+
         {
             ansiColors.put("reset", "\u001B[0m");
             ansiColors.put("black", "\u001B[30m");
