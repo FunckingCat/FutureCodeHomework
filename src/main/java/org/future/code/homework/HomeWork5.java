@@ -53,16 +53,161 @@ public class HomeWork5 {
     }
 
     public static class Person {
-        // Напиши здесь свою реализацию класса Person
+        private String name;
+
+        void setName(String newName) {
+            name = newName;
+        }
+        String getName() {
+            return name;
+        }
+        private int protection;
+        void setProtection(int newProtection) {
+            if (newProtection <= 15) {
+                protection = newProtection;
+            } else {
+                System.out.println("Уровень защиты превышен");
+            }
+        }
+            public int getProtection() {
+                return protection;
+            }
+        private int health;
+        void setHealth(int newHealth) {
+            if (newHealth <= 120) {
+                health = newHealth;
+            } else {
+                System.out.println("Уровень здоровья превышен");
+            }
+        }
+            public int getHealth() {
+                return health;
+            }
+
+        protected Person(Integer param) {
+            if (param.equals("Default")) {
+                health = 50;
+                protection = 0;
+            }
+            if (param.equals("Mage")) {
+                health = 100;
+                protection = 15;
+            }
+            if (param.equals("Archer")) {
+                health = 120;
+                protection = 15;
+            }
+        }
+
+        public Person(String parameter) {
+            if (parameter.equals("DEFAULT")) {
+                name = "Ярослав";
+            }
+            if (parameter.equals("Mage")) {
+                name = "Мерлин";
+            }
+            if (parameter.equals("Archer")) {
+                name = "Джастис";
+            }
+        }
+
+        String announce() {
+            return "Person" + name+ " имеет характеристики: " +health+ " здоровья и" + protection+ " защиты";
+        }
+
+        void takeDamage(Integer damage) throws Exception {
+            health = health - (damage - protection);
+            if (damage < 0) {
+                throw new Exception(" урон не может быть отрицательным");
+            }
+            if (health < 0) {
+                throw new Exception(" здоровье не может быть отрицательным");
+            }
+            if (health == 0) {
+                throw new PersonDead("Персонаж умер");
+            }
+        }
+
+        Integer facePunch() throws Exception{
+            int facePunch=1;
+            if (facePunch==1) {
+                takeDamage(1);
+            }
+            return facePunch;
+        }
     }
 
     public static class Mage extends Person{
-        // Напиши здесь свою реализацию класса Mage (не забудь про наследование от Person)
-    }
+         protected Mage(Integer param) {
+            super(param);
+        }
+
+        public Mage(String parameter) {
+            super(parameter);
+        }
+
+        @Override
+        String announce() {
+            return "Person" + super.getName() + " имеет характеристики: " + super.getHealth() + " здоровья и" + super.getProtection() + " защиты";
+        }
+
+        @Override
+        void takeDamage(Integer damage) throws Exception {
+            Mage.fireBoll(45==damage);
+            super.health = super.health - (damage - super.protection - super.health % 10);
+            if (damage < 0) {
+                throw new Exception(" урон не может быть отрицательным");
+            }
+            if (super.health < 0) {
+                throw new Exception(" здоровье не может быть отрицательным");
+            }
+            if (super.health == 0) {
+                throw new PersonDead("Персонаж умер");
+            }
+        }
+
+        Integer fireBoll(int j) {
+            int fireBoll = 1;
+            if(fireBoll == 1){
+                j = 45;
+            }
+            return j;
+            }
+        }
 
     public static class Archer extends Person{
-        // Напиши здесь свою реализацию класса Archer (не забудь про наследование от Person)
-    }
+        protected Archer(Integer param) {
+            super(param);
+        }
+        public Archer(String parameter){
+            super(parameter);
+        }
+        @Override
+        String announce() {
+            return "Person" + super.getName() + " имеет характеристики: " + super.getHealth() + " здоровья и" + super.getProtection() + " защиты";
+        }
+        @Override
+        public void takeDamage(Integer damage) throws Exception {
+            Archer.shootBow(damage == 40 + super.health % 10);
+            super.health = super.health - (damage - super.protection + super.health % 10);
+            if (damage < 0) {
+                throw new Exception(" урон не может быть отрицательным");
+            }
+            if (super.health < 0) {
+                throw new Exception(" здоровье не может быть отрицательным");
+            }
+            if (super.health == 0) {
+                throw new PersonDead("Персонаж умер");
+
+        }
+            }
+
+        protected Integer shootBow(int i) throws Exception {
+            i=40 + super.health % 10;
+            takeDamage(i);
+            return i;
+        }
+        }
 
     /*
    Это метод main - нажми play что бы запустить тесты.
