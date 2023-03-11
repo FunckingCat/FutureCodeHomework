@@ -25,40 +25,62 @@ public class HomeWork7 {
      * Метод должен вернуть список людей с фамилией или именем King
      */
     public static List<String> methodOne(List<String> names) {
-        // Твой код здесь
-        return Collections.emptyList();
+        List<String> listOne = names.stream()
+                .filter(s -> s.contains("King"))
+                .collect(Collectors.toList());
+        return listOne;
+        
     }
 
     /**
      * Метод должен вернуть список уникальных фамилий (2 позиция в строке)
      */
     public static List<String> methodTwo(List<String> names) {
-        // Твой код здесь
-        return Collections.emptyList();
+        List<String> listTwo = names.stream()
+                .map(s->s.substring(s.indexOf(" ")+1))
+                .distinct()
+                .collect(Collectors.toList());
+        return listTwo;
+        
     }
 
     /**
      * Метод должен вернуть список уникальных имен, начинающихся с L
      */
     public static List<String> methodThree(List<String> names) {
-        // Твой код здесь
-        return Collections.emptyList();
+       List<String> listThree = names.stream()
+                .map(s->s.substring(+0, s.indexOf(" ")))
+                .filter(s->s.startsWith("L"))
+                .distinct()
+                .collect(Collectors.toList());
+        return listThree;
     }
 
     /**
      * Метод должен вернуть список уникальных фамилий, начинающихся с W, отсортированный по алфавиту
      */
     public static List<String> methodFour(List<String> names) {
-        // Твой код здесь
-        return Collections.emptyList();
+        List<String> listFour = names.stream()
+                .map(s->s.substring(s.indexOf(" ")+1))
+                .filter(s->s.startsWith("W"))
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+         return listFour;
     }
 
     /**
      * Метод должен вернуть количество имен длинее чем 6 символов
      */
     public static Integer methodFive(List<String> names) {
+        public static Integer methodFive(List<String> names) {
         // Твой код здесь
-        return 0;
+       long counterFive = names.stream()
+                .map(s->s.substring(+0, s.indexOf(" ")))
+                .filter(s->s.length()>6)
+                .distinct()
+                .count();
+       return (int) counterFive;
     }
 
     /**
@@ -66,8 +88,17 @@ public class HomeWork7 {
      * P. S. Самостоятельно почитайте про метод flatMap()
      */
     public static Integer methodSix(List<String> names) {
-        // Твой код здесь
-        return 0;
+        long namesC = names.stream()
+                .map(s -> s.substring(0, s.indexOf(" ")-1))
+                .filter(s -> s.length()>5)
+                .distinct()
+                .count();
+        long surnameC = names.stream()
+                .map(s -> s.substring(s.indexOf(" ")))
+                .filter(s->s.length()>5)
+                .distinct()
+                .count();
+        return (int) (surnameC+namesC);
     }
 
     /**
@@ -75,8 +106,14 @@ public class HomeWork7 {
      * например "David Z.". Список должен быть отсортирован по алфавиту и состоять только из уникальных значений
      */
     public static List<String> methodSeven(List<String> names) {
-        // Твой код здесь
-        return Collections.emptyList();
+        List<String> listSeven = names.stream()
+                .map(s -> s.substring(+0, s.indexOf(" ")+2))
+                .filter(s -> (s.endsWith("K")) || (s.endsWith("S")))
+                .map(s -> s.concat("."))
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+        return listSeven;
     }
 
     public static void main(String[] args) {
