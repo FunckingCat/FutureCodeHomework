@@ -35,11 +35,69 @@ public class HomeWork1 {
             announce всех встудентов преподавателя
      */
     public static class Student {
-        // Напиши здесь свою реализацию класса Student
+       public String name;
+    public int age;
+    private int averageMark;
+
+    public Student(String name, int age, int averageMark) {
+        this.name = name;
+        this.averageMark = averageMark;
+        this.age = age;
+    }
+    void setAverageMark(int markSetter) {
+        if (markSetter>0&&markSetter<=5) {
+            this.averageMark = markSetter;
+        }
+    }
+    int getAverageMark() {
+        return this.averageMark;
+    }
+    String getName() {
+        return this.name;
+    }
+    int getAge() {
+        return this.age;
+    }
+    void studentBirthday() {
+        this.age++;
+        System.out.println("C днём рождения " + this.name + "! Тебе " + this.age + " лет!!");
+    }
+    void studentGradeGrow() {
+        if (averageMark == 5) {
+            averageMark++;
+            System.out.println("Поздравляю тебя!!! Ты получил  " + averageMark + " сегодня");
+        }
+    }
     }
 
     public static class Teacher {
-        // Напиши здесь свою реализацию класса Teacher
+      private String teacherName;
+        private int teacherAge;
+        Student[] students = new Student[3];
+        Teacher(String teacherName, int teacherAge){
+            this.teacherName = teacherName;
+            this.teacherAge = teacherAge;
+        }
+        Teacher() {
+            students[0] = new Student("Уильям", 17, 5);
+            students[1] = new Student("Алёна", 15, 2);
+            students[2] = new Student("Фредди", 16, 4);
+        }
+        void statLine() {
+            for(int i = 0; i<3; i++){
+                System.out.println(students[i].getName() + " " + students[i].getAge() + " Grade:" + students[i].getAverageMark());
+            }
+        }
+        void newBirthday(int i) {
+            students[i].studentBirthday();
+        }
+
+        String getTeacherName() {
+            return this.teacherName;
+        }
+        int getTeacherAge() {
+            return this.teacherAge;
+        }
     }
 
     /*
