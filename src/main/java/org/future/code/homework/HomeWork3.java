@@ -24,7 +24,7 @@ import java.util.function.Function;
  *      ‼️ВАЖНО‼️ Вся работа в модкле ведется на JDK-17, перед запуском скачайте его и установите
  *      правильный JDK и уровень языка в Settings -> Project Structure
  */
-public class  HomeWork3 {
+public class HomeWork3 {
 
     /**
      * Задание:
@@ -43,13 +43,81 @@ public class  HomeWork3 {
      *          для ExportException вернуть строку "ExportException"
      */
 
+
+
     public static void raiseException(Integer exceptionId) throws Exception { // Подсказка: throws Exception в итоге надо поменять на перечисление имен исключений
-        // Напиши свой код тут для задания 1
-        throw new Exception();
+        if(exceptionId <= 2)
+        {
+            if(exceptionId==1)
+            {
+                throw new SocketException();
+            }
+            else
+            {
+                throw new ClassNotFoundException();
+            }
+        }
+        else
+        {
+            if(exceptionId==3)
+            {
+                throw new AccessDeniedException();
+            }
+            else
+            {
+                throw new ExportException();
+            }
+
+        }
     }
 
-    public static String catchException(Integer integer) {
+
+
+    static class AccessDeniedException extends Exception {
+        public AccessDeniedException() {}
+
+        public AccessDeniedException(String message)
+        {
+            super(message);
+        }
+    }
+
+    static class ExportException extends Exception {
+        public ExportException() {}
+
+        public ExportException(String message)
+        {
+            super(message);
+        }
+    }
+
+
+
+
+    public static String catchException(Integer a) {
         // Напиши свой код тут для задания 2
+        try
+        {
+            raiseException(a);
+        }
+        catch(SocketException ex)
+        {
+            return "SocketException";
+        }
+        catch(ClassNotFoundException ex)
+        {
+            return "ClassNotFoundException";
+        }
+        catch(AccessDeniedException ex)
+        {
+            return "class Main$AccessDeniedException";
+        }
+        catch(ExportException ex)
+        {
+            return "class Main$ExportException";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return "Exception";
     }
 
