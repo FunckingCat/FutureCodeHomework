@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Правила выполнения домашнего задания:
@@ -40,12 +42,30 @@ public class HomeWork4 {
 
     public static List<String> correctedList(List<String> stringList) {
         // Место для Вашего кода задания №1
-        return Collections.emptyList();
+        int n = stringList.size();
+        List<String> resultList = new ArrayList<>();
+        for (int i = 0;i<n;i++)
+        {
+            Matcher m = Pattern.compile(".*[A-Z]+.*").matcher(stringList.get(i));
+            if(!m.matches())
+            {
+                resultList.add(stringList.get(i));
+            }
+        }
+        return resultList;
     }
     public static HashMap<String, Integer> magSort(HashMap<String, Integer> shopCart) {
         // Место для Вашего кода задания №2
-        return shopCart;
+        HashMap<String, Integer> resulthash = new HashMap<String, Integer>(shopCart);
+        for (String item : shopCart.keySet()) {
+            if (resulthash.get(item) > 300)
+            {
+                resulthash.remove(item);
+            }
+        }
+        return resulthash;
     }
+
 
     public static void main(String[] args) {
         testFirstTask();
